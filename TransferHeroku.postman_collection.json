@@ -1,0 +1,195 @@
+{
+	"info": {
+		"name": "TransferHeroku",
+		"_postman_id": "1547c482-c8cf-50fb-3ead-5d26f2cbf6f7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "pavliha@mailinator.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwerty123",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://transfer-api.herokuapp.com/login",
+					"protocol": "https",
+					"host": [
+						"transfer-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "first_name",
+							"value": "Pavel",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Kostyuk",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "pavliha@mailinator.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "0683188524",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwerty123",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://transfer-api.herokuapp.com/register",
+					"protocol": "https",
+					"host": [
+						"transfer-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": null
+			},
+			"response": [
+				{
+					"id": "dfbe25da-8508-4f11-9d6d-ceb0da017814",
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "Pavel",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Kostyuk",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "pavliha@mailinator.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0683188524",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwerty123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://transfer-api.herokuapp.com/register",
+							"protocol": "https",
+							"host": [
+								"transfer-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"_postman_previewtype": "parsed",
+					"header": [],
+					"cookie": [],
+					"responseTime": 0,
+					"body": "{}"
+				}
+			]
+		}
+	]
+}
