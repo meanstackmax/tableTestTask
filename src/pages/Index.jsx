@@ -3,41 +3,60 @@ import React, {Component} from 'react'
 import Layout from "../components/Layout";
 import DinamicTable from "../components/DinamicTable";
 
+const table = {
+    dataSource: [
+        [
+            "asdasd",
+            23,
+            343,
+            {
+                selected: 'hello',
+                items: ["hello", 'rich', 23]
+            }
+
+        ],
+        [
+            "asdasd",
+            23,
+            343,
+        ],
+        [
+            "asdasd",
+            23,
+            343,
+        ],
+        [
+            "asdasd",
+            23,
+            343,
+        ],
+    ],
+    columns: [
+        'TEXT',
+        'NUMBER 1',
+        'NUMBER 2',
+        'SUM',
+        'DROPDOWN',
+    ]
+}
 
 export default class Index extends Component {
 
-
     state = {
-        dataSource: [
-            [
-                "asdasd",
-                23,
-                343,
-                ["hello", 'rich', 23]
-            ],
-            [
-                "asdasd",
-                23,
-                343,
-            ],
-            [
-                "asdasd",
-                23,
-                343,
-            ],
-            [
-                "asdasd",
-                23,
-                343,
-            ],
-        ],
-        columns: [
-            'TEXT',
-            'NUMBER 1',
-            'NUMBER 2',
-            'SUM',
-            'DROPDOWN',
-        ]
+        columns: [],
+        dataSource: []
+    }
+
+    componentDidMount() {
+        const dataSource = table.dataSource
+        const columns = table.columns
+
+        dataSource.forEach((item, index) => {
+            while (item.length < columns.length) {
+                item.push("")
+            }
+        })
+        this.setState({dataSource, columns})
     }
 
     editCell({target}) {
@@ -68,7 +87,6 @@ export default class Index extends Component {
     handleAddColumn() {
         const {columns, dataSource} = this.state
 
-
         columns.push('column name')
 
         dataSource.forEach((item, index) => {
@@ -81,11 +99,7 @@ export default class Index extends Component {
 
     handleAddRow() {
         const {columns, dataSource} = this.state
-
-
         dataSource.push(Array(columns.length).fill(""))
-
-
         this.setState({dataSource})
     }
 

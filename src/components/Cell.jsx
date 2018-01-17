@@ -9,14 +9,14 @@ export default class Cell extends React.Component {
     render() {
         const {value, onEdit, data} = this.props
 
-        if (Array.isArray(value)) {
+        if (value instanceof Object) {
             return <td>
                 <select className="form-control"
                         data-column={data.columnIndex}
                         data-row={data.rowIndex}
                         onChange={onEdit}
-                        value={value}>
-                    {value.map((item, i) => <option key={i}>{item}</option>)}
+                        value={value.selected}>
+                    {value.items.map((item, i) => <option key={i}>{item}</option>)}
                 </select>
             </td>
         }
