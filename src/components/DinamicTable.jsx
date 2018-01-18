@@ -12,7 +12,6 @@ export default class DinamicTable extends React.Component {
     componentDidMount() {
         const dataSource = this.props.data
         const columns = this.props.columns
-
         dataSource.forEach((item) => {
             while (item.length < columns.length) {
                 item.push("")
@@ -35,10 +34,15 @@ export default class DinamicTable extends React.Component {
                 items: JSON.parse(target.dataset.select)
             }
         } else {
-            dataSource[rowIndex][columnIndex] = fieldValue;
+            if (!isNaN(parseFloat(fieldValue)) && isFinite(fieldValue)) {
+                dataSource[rowIndex][columnIndex] = parseFloat(fieldValue);
+
+            } else {
+                dataSource[rowIndex][columnIndex] = fieldValue;
+            }
         }
 
-
+        this.props.onChange(this.state.dataSource, this.state.columns)
         this.setState({dataSource})
     }
 
@@ -50,7 +54,7 @@ export default class DinamicTable extends React.Component {
         const {columns} = this.state
 
         columns[rowIndex] = fieldValue;
-
+        this.props.onChange(this.state.dataSource, this.state.columns)
         this.setState({columns})
     }
 
@@ -64,12 +68,14 @@ export default class DinamicTable extends React.Component {
             return item
         })
 
+        this.props.onChange(this.state.dataSource, this.state.columns)
         this.setState({columns, dataSource})
     }
 
     handleAddRow() {
         const {columns, dataSource} = this.state
         dataSource.push(Array(columns.length).fill(""))
+        this.props.onChange(this.state.dataSource, this.state.columns)
         this.setState({dataSource})
     }
 
@@ -80,7 +86,7 @@ export default class DinamicTable extends React.Component {
             <thead>
             <tr>
                 {columns.map((column, key) =>
-                    <HeaderCell value={column} onEdit={this.handleAddColumn.bind(this)} key={key} data={{key}}/>
+                    <HeaderCell value={column} onEdit={this.editColumn.bind(this)} key={key} data={{key}}/>
                 )}
                 <th>
                     <i className='fa fa-plus' onClick={this.handleAddColumn.bind(this)}/>
@@ -102,4 +108,3 @@ export default class DinamicTable extends React.Component {
         </Table>
     }
 }
-
