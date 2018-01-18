@@ -4,46 +4,45 @@ import {connect} from "react-redux";
 import Layout from "../components/Layout";
 import DinamicTable from "../components/DinamicTable";
 
-const table = {
-    dataSource: [
-        [
-            "asdasd",
-            23,
-            343,
-            {
-                selected: 'hello',
-                items: ["hello", 'rich', 23]
+const stubs = {
+    columns: ["TEXT", "NUMBER 1", "NUMBER 2", "SUM", "DROPDOWN"],
+    data: [
+        {
+            text: "text",
+            number1: 1,
+            number2: 3,
+            dropdown: {
+                "items": [
+                    "hello",
+                    "rich",
+                    23
+                ],
+                "selected": "hello"
             }
-
-        ],
-        [
-            "asdasd",
-            23,
-            343,
-        ],
-        [
-            "asdasd",
-            23,
-            343,
-        ],
-        [
-            "asdasd",
-            23,
-            343,
-        ],
-    ],
-    columns: [
-        'TEXT',
-        'NUMBER 1',
-        'NUMBER 2',
-        'SUM',
-        'DROPDOWN',
+        },
+        {
+            text: "text",
+            number1: 2,
+            number2: 2,
+            dropdown: {
+                "items": [
+                    "hello",
+                    "rich",
+                    23
+                ],
+                "selected": "hello"
+            }
+        }
     ]
 }
+
 @connect((store) => store.table)
 export default class Index extends Component {
 
     timer = null
+    state = {
+        table: null
+    }
 
     componentDidMount() {
         this.props.dispatch(getTable())
@@ -51,6 +50,7 @@ export default class Index extends Component {
 
     getUpdatedTable(dataSource, columns) {
 
+        debugger
         clearTimeout(this.timer)
         const data = dataSource.map(item => ({
             text: item[0],
@@ -70,9 +70,15 @@ export default class Index extends Component {
     }
 
     render() {
-        const {data,columns} = this.props
+        let {data, columns, loading} = this.props
 
         if (!data) return null
+
+        if (!data.length && !loading) data = stubs.data
+
+        if (!columns.length && !loading) columns = stubs.columns
+
+
         return <Layout>
             <DinamicTable
                 columns={columns}

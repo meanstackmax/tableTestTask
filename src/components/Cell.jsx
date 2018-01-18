@@ -3,7 +3,7 @@ import {Input} from "reactstrap";
 
 export default class Cell extends React.Component {
     state = {
-        editable: false
+        editable: false,
     }
 
     render() {
@@ -24,12 +24,17 @@ export default class Cell extends React.Component {
 
 
         return <td>
-            <Input type='text'
-                   placeholder="empty"
-                   data-column={data.columnIndex}
-                   data-row={data.rowIndex}
-                   onChange={onEdit}
-                   value={value}/>
+            <div className='d-flex'>
+                <Input type='text'
+                       placeholder="empty"
+                       data-column={data.columnIndex}
+                       data-row={data.rowIndex}
+                       onChange={onEdit}
+                       value={value}/>
+                {/*{!value ? <div className='mt-2 text-muted'><i className='fa fa-plus'/></div> : null}*/}
+
+
+            </div>
         </td>
 
     }
