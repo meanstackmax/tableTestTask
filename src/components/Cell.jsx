@@ -14,6 +14,7 @@ export default class Cell extends React.Component {
                 <select className="form-control"
                         data-column={data.columnIndex}
                         data-row={data.rowIndex}
+                        data-select={JSON.stringify(value.items)}
                         onChange={onEdit}
                         value={value.selected}>
                     {value.items.map((item, i) => <option key={i}>{item}</option>)}

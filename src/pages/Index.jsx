@@ -67,7 +67,15 @@ export default class Index extends Component {
 
         const {dataSource} = this.state
 
-        dataSource[rowIndex][columnIndex] = fieldValue;
+        if (target.dataset.select) {
+            dataSource[rowIndex][columnIndex] = {
+                selected: fieldValue,
+                items: JSON.parse(target.dataset.select)
+            }
+        } else {
+            dataSource[rowIndex][columnIndex] = fieldValue;
+        }
+
 
         this.setState({dataSource})
     }
