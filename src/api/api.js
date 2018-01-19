@@ -1,7 +1,7 @@
 import axios from 'axios'
 import urlencodeForm from "../services/urlencodeForm";
 
-export const API_URL = 'https://table-test-task-backend.herokuapp.com/'
+export const API_URL = 'https://table-test-task-backend.herokuapp.com'
 
 
 export async function get(url) {
